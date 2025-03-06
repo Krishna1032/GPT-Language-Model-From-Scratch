@@ -1,0 +1,4 @@
+.jupyter
+.ipynb_checkpoints
+gpt.py
+bigram.py
