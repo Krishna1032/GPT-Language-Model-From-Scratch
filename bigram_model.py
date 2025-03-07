@@ -11,8 +11,6 @@ eval_interval = 300
 learning_rate = 1e-2
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 eval_iters = 200
-# ------------
-torch.manual_seed(1337)
 
 # -------------- Get the Data --------------
 
