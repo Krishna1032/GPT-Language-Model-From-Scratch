@@ -14,10 +14,11 @@ This repository contains an implementation of a character-level Transformer-base
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Installation](#installation)
+- [Requirements](#requirements)
+- [Dataset](#dataset)
 - [Usage](#usage)
 - [Model Architecture](#model-architecture)
-- [Training](#training)
+- [HyperParameters](#hyperparameters)
 - [Future Improvements](#future-improvements)
 - [References](#references)
 
@@ -37,19 +38,26 @@ This project implements a GPT-style language model from scratch using PyTorch. T
 - Training using AdamW optimizer
 - Ability to generate text given an initial context
 
-## Installation
+## Requirements
+Ensure you have the following installed:
+- Python 3.x
+- PyTorch
+- NumPy
+- Requests
 
-To use this implementation, install the required dependencies:
-
-```bash
-pip install torch requests
+To install dependencies, run:
+```sh
+pip install torch numpy requests
 ```
+
+## Dataset
+The model trains on the Tiny Shakespeare dataset. The script automatically downloads the dataset if it's not already present in the `data/` directory.
 
 ## Usage
 
 Clone the repository and run the training script:
 
-```bash
+```sh
 git clone https://github.com/your-repo-name.git
 cd your-repo-name
 python train.py
@@ -57,7 +65,7 @@ python train.py
 
 After training, it automatically generates text with:
 
-```python
+```sh
 context = torch.zeros((1,1), dtype=torch.long, device=device)
 print(decode(model.generate(context, max_tokens=500)[0].tolist()))
 ```
@@ -76,12 +84,21 @@ This implementation follows the decoder-only architecture of the Transformer mod
 
 Below is the transformer architecture used in this implementation:
 
-## Training
-
-- The model is trained on the Tiny Shakespeare dataset (~1MB of text).
-- Uses a batch size of 32 and sequence length (block size) of 128.
-- Optimized using AdamW with a learning rate of 3e-3.
-- Training runs for 5000 iterations with periodic evaluation.
+## Hyperparameters
+The script defines the following hyperparameters:
+```sh
+batch_size = 32
+block_size = 128
+max_iters = 5000
+eval_interval = 300
+learning_rate = 3e-3
+n_embd = 256
+n_head = 6
+n_layer = 6
+dropout = 0.2
+device = "mps" if torch.backends.mps.is_available() else "cpu"
+```
+Adjust these values as needed to optimize training.
 
 ## Future Improvements
 
@@ -98,4 +115,5 @@ Below is the transformer architecture used in this implementation:
 - Sebastian Raschka's "Build LLM from Scratch"
 - PyTorch documentation
 
-This project serves as a foundation for understanding transformer-based language models. Contributions and suggestions are welcome!
+## License
+This project is open-source under the MIT License.
