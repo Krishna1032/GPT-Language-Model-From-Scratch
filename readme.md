@@ -2,7 +2,13 @@
 
 This repository contains an implementation of a character-level Transformer-based language model, inspired by the "Attention Is All You Need" paper (2017) and Andrej Karpathy's "Build LLM from Scratch" series. The model is a decoder-only architecture, following the original Transformer design while omitting the encoder. Future updates will incorporate insights from Sebastian Raschka's "Build LLM from Scratch" book.
 
-<img src="img/transformer_diagram.png" alt="Transformer Model Architecture" width="600">
+---
+
+<p align="center">
+    <img src="img/transformer_diagram.png" alt="Transformer Model Architecture" width="500">
+</p>
+
+---
 
 ## Table of Contents
 
