@@ -60,7 +60,7 @@ Clone the repository and run the training script:
 ```sh
 git clone https://github.com/your-repo-name.git
 cd your-repo-name
-python train.py
+python gpt_model.py
 ```
 
 After training, it automatically generates text with:
